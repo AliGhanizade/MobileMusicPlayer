@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========================================================= -->
+    <!-- 1. GREEN THEME (SPOTIFY STYLE - VIBRANT)                  -->
+    <!-- ========================================================= -->
+    <!-- LIGHT MODE -->
+    <color name="green_light_primary">#00E65B</color> <!-- سبز نئونی و جیغ -->
+    <color name="green_light_onPrimary">#000000</color>
+    <color name="green_light_primaryContainer">#D4FFE4</color>
+    <color name="green_light_onPrimaryContainer">#003912</color>
+    <color name="green_light_background">#F4F9F5</color>
+    <color name="green_light_onBackground">#0B110D</color>
+    <color name="green_light_surface">#FFFFFF</color>
+    <color name="green_light_onSurface">#0B110D</color>
+    <color name="green_light_surfaceVariant">#E0EFE5</color>
+    <color name="green_light_onSurfaceVariant">#1B2B21</color>
+    <color name="green_light_outline">#4D6255</color>
+
+    <!-- DARK MODE -->
+    <color name="green_dark_primary">#1DB954</color>
+    <color name="green_dark_onPrimary">#000000</color>
+    <color name="green_dark_background">#090D0A</color> <!-- مشکی متمایل به سبز عمیق -->
+    <color name="green_dark_surface">#121914</color>
+    <color name="green_dark_onSurface">#FFFFFF</color>
+    <color name="green_dark_surfaceVariant">#1F2B22</color>
+    <color name="green_dark_onSurfaceVariant">#A3BEAC</color>
+
+    <!-- ========================================================= -->
+    <!-- 2. BLUE THEME (ELECTRIC VIBE)                            -->
+    <!-- ========================================================= -->
+    <!-- LIGHT MODE -->
+    <color name="blue_light_primary">#0052FF</color> <!-- آبی الکتریکی خیره‌کننده -->
+    <color name="blue_light_onPrimary">#FFFFFF</color>
+    <color name="blue_light_primaryContainer">#DEE7FF</color>
+    <color name="blue_light_onPrimaryContainer">#001442</color>
+    <color name="blue_light_background">#F5F7FF</color>
+    <color name="blue_light_onBackground">#0A0F1D</color>
+    <color name="blue_light_surface">#FFFFFF</color>
+    <color name="blue_light_onSurface">#0A0F1D</color>
+    <color name="blue_light_surfaceVariant">#E2E6F2</color>
+    <color name="blue_light_onSurfaceVariant">#1D2335</color>
+    <color name="blue_light_outline">#4E5468</color>
+
+    <!-- DARK MODE -->
+    <color name="blue_dark_primary">#4D82FF</color>
+    <color name="blue_dark_onPrimary">#000000</color>
+    <color name="blue_dark_background">#080B11</color> <!-- مشکی متمایل به سورمه‌ای عمیق -->
+    <color name="blue_dark_surface">#111622</color>
+    <color name="blue_dark_onSurface">#FFFFFF</color>
+    <color name="blue_dark_surfaceVariant">#1D2436</color>
+    <color name="blue_dark_onSurfaceVariant">#ADB7D4</color>
+
+    <!-- ========================================================= -->
+    <!-- 3. PINK THEME (NEON MAGENTA)                             -->
+    <!-- ========================================================= -->
+    <!-- LIGHT MODE -->
+    <color name="pink_light_primary">#FF0055</color> <!-- صورتی مابین سرخابی و نئون -->
+    <color name="pink_light_onPrimary">#FFFFFF</color>
+    <color name="pink_light_primaryContainer">#FFDEE5</color>
+    <color name="pink_light_onPrimaryContainer">#410011</color>
+    <color name="pink_light_background">#FFF5F6</color>
+    <color name="pink_light_onBackground">#1F0A0E</color>
+    <color name="pink_light_surface">#FFFFFF</color>
+    <color name="pink_light_onSurface">#1F0A0E</color>
+    <color name="pink_light_surfaceVariant">#F7E1E4</color>
+    <color name="pink_light_onSurfaceVariant">#361E23</color>
+    <color name="pink_light_outline">#6B4E53</color>
+
+    <!-- DARK MODE -->
+    <color name="pink_dark_primary">#FF4D85</color>
+    <color name="pink_dark_onPrimary">#000000</color>
+    <color name="pink_dark_background">#0F080A</color> <!-- مشکی متمایل به زرشکی عمیق -->
+    <color name="pink_dark_surface">#1C1014</color>
+    <color name="pink_dark_onSurface">#FFFFFF</color>
+    <color name="pink_dark_surfaceVariant">#2E1B20</color>
+    <color name="pink_dark_onSurfaceVariant">#E6BCC3</color>
+
+    <!-- Shared -->
+    <color name="error_light">#E61919</color>
+    <color name="onError_light">#FFFFFF</color>
+</resources>

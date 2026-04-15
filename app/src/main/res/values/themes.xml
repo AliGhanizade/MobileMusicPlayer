@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MonaMusic" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Default Fallback -->
+    </style>
+
+    <style name="Theme.MonaMusic" parent="Theme.MusicPlayer" />
+
+    <style name="CircleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <!-- Default Green Theme -->
+    <style name="Theme.MusicPlayer" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/green_light_primary</item>
+        <item name="colorOnPrimary">@color/green_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/green_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/green_light_onPrimaryContainer</item>
+        <item name="android:colorBackground">@color/green_light_background</item>
+        <item name="colorOnBackground">@color/green_light_onBackground</item>
+        <item name="colorSurface">@color/green_light_surface</item>
+        <item name="colorOnSurface">@color/green_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/green_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/green_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/green_light_outline</item>
+        <item name="colorError">@color/error_light</item>
+        <item name="colorOnError">@color/onError_light</item>
+    </style>
+
+    <!-- Blue Theme -->
+    <style name="Theme.MusicPlayer.Blue" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/blue_light_primary</item>
+        <item name="colorOnPrimary">@color/blue_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/blue_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/blue_light_onPrimaryContainer</item>
+        <item name="android:colorBackground">@color/blue_light_background</item>
+        <item name="colorOnBackground">@color/blue_light_onBackground</item>
+        <item name="colorSurface">@color/blue_light_surface</item>
+        <item name="colorOnSurface">@color/blue_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/blue_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/blue_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/blue_light_outline</item>
+    </style>
+
+    <!-- Pink Theme -->
+    <style name="Theme.MusicPlayer.Pink" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/pink_light_primary</item>
+        <item name="colorOnPrimary">@color/pink_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/pink_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/pink_light_onPrimaryContainer</item>
+        <item name="android:colorBackground">@color/pink_light_background</item>
+        <item name="colorOnBackground">@color/pink_light_onBackground</item>
+        <item name="colorSurface">@color/pink_light_surface</item>
+        <item name="colorOnSurface">@color/pink_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/pink_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/pink_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/pink_light_outline</item>
+    </style>
+</resources>
