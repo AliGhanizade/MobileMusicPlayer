@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:color="#1DB954" android:state_checked="true" /> <!-- سبز اسپاتیفای -->
+    <item android:color="#B3B3B3" /> <!-- خاکستری برای حالت عادی -->
+    <!-- res/color/bottom_nav_colors.xml -->
+    <!-- رنگ آیتم انتخاب شده (سبز/آبی/صورتی بر اساس تم) -->
+    <item android:color="?attr/colorPrimary" android:state_checked="true" />
+    <!-- رنگ آیتم‌های غیرفعال -->
+    <item android:color="?attr/colorOnSurfaceVariant" />
+
+</selector>
