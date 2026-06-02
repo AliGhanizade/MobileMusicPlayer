@@ -44,12 +44,15 @@ public class PlaylistFragment extends Fragment {
 
         rvPlaylists.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-        Playlist fav = new Playlist("Favorites");
-        Playlist chill = new Playlist("Chill Beats");
+        // Seed the default playlists only on the very first launch
+        if (!PlaylistStorage.hasData(requireContext())) {
+            List<Playlist> defaults = new ArrayList<>();
+            defaults.add(new Playlist("Favorites"));
+            defaults.add(new Playlist("Chill Beats"));
+            PlaylistStorage.save(requireContext(), defaults);
+        }
 
-        allPlaylists.add(fav);
-        allPlaylists.add(chill);
-
+        allPlaylists.addAll(PlaylistStorage.load(requireContext()));
         filteredPlaylists.addAll(allPlaylists);
 
         adapter = new PlaylistAdapter(filteredPlaylists, new PlaylistAdapter.OnPlaylistClickListener() {
@@ -110,8 +113,8 @@ public class PlaylistFragment extends Fragment {
                 .setPositiveButton("Create", (dialog, which) -> {
                     String name = input.getText().toString().trim();
                     if (!name.isEmpty()) {
-                        Playlist newPlaylist = new Playlist(name);
-                        allPlaylists.add(newPlaylist);
+                        allPlaylists.add(new Playlist(name));
+                        PlaylistStorage.save(requireContext(), allPlaylists);
 
                         filterPlaylists(etSearch.getText().toString());
                         Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
