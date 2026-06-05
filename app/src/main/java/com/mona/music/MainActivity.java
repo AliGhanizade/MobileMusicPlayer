@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton btnMiniPlay;
     private TextView tvMiniTitle, tvMiniArtist;
     private ImageView imgMiniCover;
+    private ProgressBar miniPlayerProgress;
 
     private android.media.MediaPlayer mediaPlayer;
     private Song currentSong;
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         tvMiniTitle = findViewById(R.id.tv_mini_song_title);
         tvMiniArtist = findViewById(R.id.tv_mini_artist);
         imgMiniCover = findViewById(R.id.img_mini_cover);
+        miniPlayerProgress = findViewById(R.id.mini_player_progress);
+
+        miniPlayerContainer.setVisibility(View.GONE);
 
         miniPlayerContainer.setOnClickListener(v -> {
             if (currentSong != null) {
@@ -103,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
             isPlaying = true;
             btnMiniPlay.setImageResource(R.drawable.ic_pause);
 
+            miniPlayerContainer.setVisibility(View.VISIBLE);
+            miniPlayerProgress.setMax(mediaPlayer.getDuration());
+            miniPlayerProgress.setProgress(0);
+
             mediaPlayer.setOnCompletionListener(mp -> {
                 if (isRepeatOn) {
                     mediaPlayer.start();
@@ -133,8 +142,12 @@ public class MainActivity extends AppCompatActivity {
     public void nextSong() {
         if (songList.isEmpty()) return;
 
-        if (isShuffleOn) {
-            currentSongIndex = new Random().nextInt(songList.size());
+        if (isShuffleOn && songList.size() > 1) {
+            int nextIndex;
+            do {
+                nextIndex = new Random().nextInt(songList.size());
+            } while (nextIndex == currentSongIndex);
+            currentSongIndex = nextIndex;
         } else {
             currentSongIndex = (currentSongIndex + 1) % songList.size();
         }
@@ -179,5 +192,20 @@ public class MainActivity extends AppCompatActivity {
 
     public boolean isRepeatOn() {
         return isRepeatOn;
+    }
+
+    public void updateMiniPlayerProgress() {
+        if (mediaPlayer != null && miniPlayerProgress != null) {
+            miniPlayerProgress.setProgress(mediaPlayer.getCurrentPosition());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
     }
 }

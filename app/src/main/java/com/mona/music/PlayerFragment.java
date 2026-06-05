@@ -166,6 +166,7 @@ public class PlayerFragment extends Fragment {
                         seekBar.setProgress(currentPosition);
                         tvCurrentTime.setText(formatTime(currentPosition));
                     }
+                    mainActivity.updateMiniPlayerProgress();
                     updatePlayButtonIcon();
                 }
                 handler.postDelayed(this, 1000);
