@@ -4,6 +4,7 @@ import android.content.ContentUris;
 import android.net.Uri;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class Song {
     private long id;
@@ -58,5 +59,17 @@ public class Song {
         return albumId;
     }
 
+    // Two songs are considered the same when they come from the same MediaStore entry
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Song)) return false;
+        Song song = (Song) o;
+        return id == song.id;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

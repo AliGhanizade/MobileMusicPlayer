@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -187,7 +189,7 @@ public class SongFragment extends Fragment {
 
                 mainActivity.playSong(song);
             }
-        });
+        }, song -> showAddToPlaylistDialog(song));
         recyclerView.setAdapter(songAdapter);
 
     }
@@ -214,5 +216,68 @@ public class SongFragment extends Fragment {
         if (songAdapter != null) {
             songAdapter.updateList(tempFilteredList);
         }
+    }
+
+    private void showAddToPlaylistDialog(Song song) {
+        List<Playlist> playlists = PlaylistStorage.load(requireContext());
+
+        String[] options = new String[playlists.size() + 1];
+        for (int i = 0; i < playlists.size(); i++) {
+            options[i] = playlists.get(i).getName();
+        }
+        options[playlists.size()] = "+ New Playlist";
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Add \"" + song.getTitle() + "\" to...")
+                .setItems(options, (dialog, which) -> {
+                    if (which == playlists.size()) {
+                        showNewPlaylistDialog(song);
+                    } else {
+                        addSongToPlaylist(playlists.get(which), song);
+                    }
+                })
+                .show();
+    }
+
+    private void showNewPlaylistDialog(Song song) {
+        final EditText input = new EditText(getContext());
+        input.setHint("Enter playlist name...");
+
+        new AlertDialog.Builder(requireContext())
+                .setTitle("New Playlist")
+                .setView(input)
+                .setPositiveButton("Create", (dialog, which) -> {
+                    String name = input.getText().toString().trim();
+                    if (!name.isEmpty()) {
+                        List<Playlist> playlists = PlaylistStorage.load(requireContext());
+                        Playlist playlist = new Playlist(name);
+                        playlist.addSong(song);
+                        playlists.add(playlist);
+                        PlaylistStorage.save(requireContext(), playlists);
+
+                        Toast.makeText(getContext(), "Added to " + name, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void addSongToPlaylist(Playlist playlist, Song song) {
+        if (playlist.getSongs().contains(song)) {
+            Toast.makeText(getContext(), "Already in " + playlist.getName(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        playlist.addSong(song);
+        List<Playlist> playlists = PlaylistStorage.load(requireContext());
+        for (int i = 0; i < playlists.size(); i++) {
+            if (playlists.get(i).getName().equals(playlist.getName())) {
+                playlists.set(i, playlist);
+                break;
+            }
+        }
+        PlaylistStorage.save(requireContext(), playlists);
+
+        Toast.makeText(getContext(), "Added to " + playlist.getName(), Toast.LENGTH_SHORT).show();
     }
 }
