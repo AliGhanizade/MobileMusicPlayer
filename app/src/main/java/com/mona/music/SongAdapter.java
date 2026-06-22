@@ -21,14 +21,20 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
     }
 
     final private OnSongClickListener songListener;
+    final private OnSongLongClickListener songLongListener;
 
     public interface OnSongClickListener {
         void onSongClick(Song song);
     }
 
-    public SongAdapter(List<Song> songList, OnSongClickListener listener) {
+    public interface OnSongLongClickListener {
+        void onSongLongClick(Song song);
+    }
+
+    public SongAdapter(List<Song> songList, OnSongClickListener listener, OnSongLongClickListener longListener) {
         this.songList = songList;
         this.songListener = listener;
+        this.songLongListener = longListener;
     }
 
     public void updateList(List<Song> newList) {
@@ -69,8 +75,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.SongViewHolder
             holder.imgCover.setImageResource(R.drawable.ic_music_note);
         }
         holder.itemView.setOnClickListener(v -> songListener.onSongClick(song));
+        holder.itemView.setOnLongClickListener(v -> {
+            if (songLongListener != null) songLongListener.onSongLongClick(song);
+            return true;
+        });
+        holder.btnMore.setOnClickListener(v -> {
+            if (songLongListener != null) songLongListener.onSongLongClick(song);
+        });
     }
-
-
-
 }
