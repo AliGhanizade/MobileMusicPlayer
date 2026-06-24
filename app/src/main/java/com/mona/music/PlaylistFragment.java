@@ -74,6 +74,11 @@ public class PlaylistFragment extends Fragment {
             public void onAddPlaylistClick() {
                 showCreatePlaylistDialog();
             }
+
+            @Override
+            public void onPlaylistLongClick(Playlist playlist) {
+                showDeletePlaylistDialog(playlist);
+            }
         });
         rvPlaylists.setAdapter(adapter);
 
@@ -119,6 +124,20 @@ public class PlaylistFragment extends Fragment {
                         filterPlaylists(etSearch.getText().toString());
                         Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
                     }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void showDeletePlaylistDialog(Playlist playlist) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Delete Playlist")
+                .setMessage("Delete \"" + playlist.getName() + "\"?")
+                .setPositiveButton("Delete", (dialog, which) -> {
+                    allPlaylists.remove(playlist);
+                    PlaylistStorage.save(requireContext(), allPlaylists);
+                    filterPlaylists(etSearch.getText().toString());
+                    Toast.makeText(getContext(), "Playlist deleted", Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Cancel", null)
                 .show();

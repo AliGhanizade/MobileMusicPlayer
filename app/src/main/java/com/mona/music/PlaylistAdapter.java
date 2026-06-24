@@ -19,6 +19,7 @@ public class PlaylistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public interface OnPlaylistClickListener {
         void onPlaylistClick(Playlist playlist);
         void onAddPlaylistClick();
+        void onPlaylistLongClick(Playlist playlist);
     }
 
     public PlaylistAdapter(List<Playlist> playlists, OnPlaylistClickListener clickListener) {
@@ -56,6 +57,10 @@ public class PlaylistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             playlistHolder.tvName.setText(playlist.getName());
 
             playlistHolder.itemView.setOnClickListener(v -> clickListener.onPlaylistClick(playlist));
+            playlistHolder.itemView.setOnLongClickListener(v -> {
+                clickListener.onPlaylistLongClick(playlist);
+                return true;
+            });
         } else if (holder instanceof AddViewHolder) {
             holder.itemView.setOnClickListener(v -> clickListener.onAddPlaylistClick());
         }
