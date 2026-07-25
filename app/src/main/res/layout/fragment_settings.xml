@@ -49,7 +49,33 @@
                 android:id="@+id/tv_current_theme"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="System Default"
+                android:text="Default"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:textSize="14sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_night_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="12dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Night Mode"
+                android:textColor="?attr/colorOnBackground"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tv_current_night_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="System"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:textSize="14sp"/>
         </LinearLayout>
